@@ -32,7 +32,7 @@
   "scripts": {
     "start": "node bin/trainu.mjs",
     "dev": "node --watch bin/trainu.mjs",
-    "test": "node --test test/",
+    "test": "node --test test/server.test.mjs test/units.test.mjs",
     "test:server": "node --test test/server.test.mjs",
     "test:units": "node --test test/units.test.mjs",
     "icons": "node scripts/make-icons.mjs",
