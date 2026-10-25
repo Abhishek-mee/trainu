@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="noindex">
+  <title>Pair this phone · Trainu</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/pair.css">
+  <script src="/js/pair.js" defer></script>
+</head>
+<body class="pair-body">
+  <div class="pair-shell">
+    <header class="pair-top">
+      <span class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l10.2-6.8a1 1 0 0 0 0-1.7L9.6 4.3A1 1 0 0 0 8 5.2Z"/></svg>
+        </span>
+        <span>Trainu</span>
+      </span>
+      <span class="pill"><i class="dot"></i><span>Local only</span></span>
+    </header>
+
+    <main class="ticket">
+      <div class="ticket-ribbon">
+        <span class="ticket-kicker">Private screening</span>
+        <span class="ticket-admit">Admit one</span>
+      </div>
+
+      <div class="ticket-main">
+        <p class="eyebrow">Pairing pass · 01</p>
+        <h1>Connect this phone</h1>
+        <p class="pair-lede">
+          The laptop holding your films issues a pass to one phone at a time. Scan the code
+          on its control panel, or type the eight-character code below.
+        </p>
+
+        <!--PAIR_ERROR-->
+
+        <ol class="pair-steps">
+          <li>
+            <span class="step-num">01</span>
+            <span class="step-copy">On the laptop, open the control panel at <b class="panel-url"><!--PANEL_URL--></b>.</span>
+          </li>
+          <li>
+            <span class="step-num">02</span>
+            <span class="step-copy">Point the phone camera at the pairing pass in <b>Connect your phone</b>.</span>
+          </li>
+          <li>
+            <span class="step-num">03</span>
+            <span class="step-copy">Tap the link. The pass is stamped and the library opens on this phone.</span>
+          </li>
+        </ol>
+
+        <div class="pair-divider"><span>or type the code</span></div>
+
+        <form id="pair-form" class="pair-form" autocomplete="off" novalidate>
+          <label for="pair-code">Eight-character pairing code</label>
+          <div class="pair-input-row">
+            <input id="pair-code" class="input mono" type="text" inputmode="latin" autocapitalize="characters"
+                   autocomplete="one-time-code" spellcheck="false" maxlength="12" placeholder="A1B2C3D4"
+                   aria-describedby="pair-hint">
+            <button class="btn btn-primary" type="submit">Connect</button>
+          </div>
+          <p class="pair-error" id="pair-local-error" role="alert" hidden></p>
+          <p class="fine" id="pair-hint">Printed under the QR, like <span class="mono">A1B2C3D4</span>.</p>
+        </form>
+
+        <div class="pair-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.5 19 6v5.2c0 4.4-2.8 7.6-7 9.3-4.2-1.7-7-4.9-7-9.3V6l7-2.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p>No account, no upload. The pass is checked on this network, and only the video you choose travels from the laptop.</p>
+        </div>
+      </div>
+
+      <div class="ticket-tear" aria-hidden="true">
+        <span class="tear-label">USB · Tether · Wi-Fi<br>No internet needed</span>
+        <span class="barcode"></span>
+      </div>
+    </main>
+
+    <footer class="pair-foot">
+      <p>Phone can't find the panel? The control panel opens on the laptop only. Use <b>USB debugging</b> or <b>USB tethering</b> there, or join the same Wi-Fi.</p>
+      <p class="fine">Trainu · your laptop, on your phone</p>
+    </footer>
+  </div>
+</body>
+</html>

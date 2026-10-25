@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Trainu">
+  <defs>
+    <radialGradient id="g" cx="42%" cy="36%" r="70%">
+      <stop offset="0" stop-color="#e50914" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#e50914" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="p" x1="24" y1="18" x2="49" y2="47" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff3b3b"/>
+      <stop offset="1" stop-color="#b20710"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#000000"/>
+  <rect x=".5" y=".5" width="63" height="63" rx="13.5" fill="none" stroke="#ffffff" stroke-opacity=".12"/>
+  <circle cx="29" cy="27" r="25" fill="url(#g)"/>
+  <path d="M26.5 19.2v25.6c0 1.55 1.7 2.5 3 1.63l18.1-12.8a1.9 1.9 0 0 0 0-3.26L29.5 17.57a1.9 1.9 0 0 0-3 1.63Z" fill="url(#p)"/>
+</svg>

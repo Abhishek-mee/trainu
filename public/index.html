@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Watch the videos on your laptop from your phone over USB or Wi-Fi. No copying, no internet needed.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Trainu">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Trainu</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/icon-180.png">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <script src="/js/player.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</head>
+<body class="app-body">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l10.2-6.8a1 1 0 0 0 0-1.7L9.6 4.3A1 1 0 0 0 8 5.2Z"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5m0 0 6-6m-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+      <symbol id="i-more" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></symbol>
+      <symbol id="i-back10" viewBox="0 0 24 24"><path d="M4.6 10a8.2 8.2 0 1 1-.4 5.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M4.2 4.5V10h5.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><text x="12.6" y="15.6" text-anchor="middle" font-size="6.4" font-weight="800" fill="currentColor" stroke="none">10</text></symbol>
+      <symbol id="i-fwd10" viewBox="0 0 24 24"><path d="M19.4 10a8.2 8.2 0 1 0 .4 5.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M19.8 4.5V10h-5.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><text x="11.4" y="15.6" text-anchor="middle" font-size="6.4" font-weight="800" fill="currentColor" stroke="none">10</text></symbol>
+      <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 9.5h3L12 5v14L7 14.5H4z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.5 8.8a5 5 0 0 1 0 6.4M18.3 6.2a8.6 8.6 0 0 1 0 11.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+      <symbol id="i-muted" viewBox="0 0 24 24"><path d="M4 9.5h3L12 5v14L7 14.5H4z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m16 9.5 5 5m0-5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-pip" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="12" y="11" width="6.5" height="5" rx="1.2" fill="currentColor"/></symbol>
+      <symbol id="i-fullscreen" viewBox="0 0 24 24"><path d="M9 4H5.5A1.5 1.5 0 0 0 4 5.5V9m11-5h3.5A1.5 1.5 0 0 1 20 5.5V9M9 20H5.5A1.5 1.5 0 0 1 4 18.5V15m11 5h3.5a1.5 1.5 0 0 0 1.5-1.5V15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-fullscreen-exit" viewBox="0 0 24 24"><path d="M4 9h5V4m11 5h-5V4M4 15h5v5m11-5h-5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.5 7.5A2.5 2.5 0 0 1 6 5h4l2 2.5h6A2.5 2.5 0 0 1 20.5 10v7A2.5 2.5 0 0 1 18 19.5H6A2.5 2.5 0 0 1 3.5 17Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+      <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 4.5v15m9-15v15M3 9h4.5M3 15h4.5m9 0H21m-4.5-6H21" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M19 13.5v-3l-2-.6a7 7 0 0 0-.7-1.6l1-1.9-2.1-2.1-1.9 1a7 7 0 0 0-1.6-.7L11 2.5H8l-.6 2a7 7 0 0 0-1.6.7l-1.9-1L1.8 6.3l1 1.9a7 7 0 0 0-.7 1.6l-2 .7v3l2 .6a7 7 0 0 0 .7 1.6l-1 1.9 2.1 2.1 1.9-1a7 7 0 0 0 1.6.7l.6 2h3l.6-2a7 7 0 0 0 1.6-.7l1.9 1 2.1-2.1-1-1.9a7 7 0 0 0 .7-1.6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+      <symbol id="i-usb" viewBox="0 0 24 24"><path d="M12 20V5m0 0-3.5 3M12 5l3.5 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="20" r="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 13.5 7 10.5V8m5 4.5 5-3V11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="5.5" y="6.5" width="3" height="3" rx=".6" fill="currentColor" stroke="none"/><rect x="15.5" y="9.5" width="3" height="3" rx=".6" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 4.5 21 20H3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 9v5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="17.3" r="1" fill="currentColor"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-1.6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M20 4v7h-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4.5h6V7m-9 0 1 12.5h10L18 7M10 10.5v6m4-6v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m0 0 4-4m-4 4-4-4M4.5 19.5h15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="8" r="1" fill="currentColor"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="app" id="app">
+    <header class="topbar" id="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l10.2-6.8a1 1 0 0 0 0-1.7L9.6 4.3A1 1 0 0 0 8 5.2Z"/></svg></span>
+          <span>Trainu</span>
+        </div>
+        <div class="top-actions">
+          <span class="pill" id="conn-pill"><i class="dot"></i><span id="conn-text">Connecting</span></span>
+          <button class="icon-btn" id="search-toggle" aria-label="Search library" aria-expanded="false">
+            <svg><use href="#i-search"></use></svg>
+          </button>
+        </div>
+      </div>
+      <div class="searchbar" id="searchbar" hidden>
+        <div class="search-field">
+          <svg><use href="#i-search"></use></svg>
+          <input id="search-input" type="search" placeholder="Search your library" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Search your library">
+          <button class="search-clear" id="search-clear" aria-label="Clear search" hidden>
+            <svg style="width:17px;height:17px"><use href="#i-close"></use></svg>
+          </button>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="search-cancel">Cancel</button>
+      </div>
+    </header>
+
+    <section class="hero" id="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img id="hero-image" alt="" decoding="async">
+      </div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow" id="hero-eyebrow">Your laptop's library</p>
+        <h1 id="hero-title">Library</h1>
+        <p class="hero-sub">
+          <span id="hero-count">Connecting…</span>
+          <span class="sep"></span>
+          <span id="hero-size">—</span>
+          <span class="sep"></span>
+          <span id="hero-state">over USB</span>
+        </p>
+        <div class="hero-actions" id="hero-actions" hidden>
+          <button class="btn btn-primary btn-sm" id="hero-play" type="button">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-play"></use></svg>
+            <span id="hero-play-label">Play</span>
+          </button>
+          <button class="btn btn-ghost btn-sm" id="hero-browse" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><use href="#i-grid"></use></svg>
+            Browse
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="banner" id="offline-banner" hidden>
+      <svg><use href="#i-warning"></use></svg>
+      <span>Can't reach the laptop. Showing the last library it shared. Playback needs the USB or Wi-Fi link.</span>
+    </div>
+
+    <section class="rail-section" id="continue-section" hidden>
+      <div class="rail-head">
+        <h2>Continue watching</h2>
+        <span id="continue-meta"></span>
+      </div>
+      <div class="rail" id="continue-rail"></div>
+    </section>
+
+    <div class="section-head">
+      <h2 id="section-title">All videos</h2>
+      <select class="select" id="sort-select" aria-label="Sort library">
+        <option value="recent">Newest first</option>
+        <option value="name">Title A–Z</option>
+        <option value="size">Largest first</option>
+        <option value="duration">Longest first</option>
+      </select>
+    </div>
+
+    <div class="chips" id="chips" aria-label="Filter by folder"></div>
+
+    <div class="loading-note" id="scanning-note" hidden>
+      <div class="spinner sm"></div>
+      <span id="scanning-text">Reading the laptop's video folders…</span>
+    </div>
+
+    <div class="skeleton-grid" id="skeleton" aria-hidden="true">
+      <div class="sk-card"><div class="skeleton sk-thumb"></div><div class="skeleton sk-line"></div><div class="skeleton sk-line short"></div></div>
+      <div class="sk-card"><div class="skeleton sk-thumb"></div><div class="skeleton sk-line"></div><div class="skeleton sk-line short"></div></div>
+      <div class="sk-card"><div class="skeleton sk-thumb"></div><div class="skeleton sk-line"></div><div class="skeleton sk-line short"></div></div>
+      <div class="sk-card"><div class="skeleton sk-thumb"></div><div class="skeleton sk-line"></div><div class="skeleton sk-line short"></div></div>
+      <div class="sk-card"><div class="skeleton sk-thumb"></div><div class="skeleton sk-line"></div><div class="skeleton sk-line short"></div></div>
+      <div class="sk-card"><div class="skeleton sk-thumb"></div><div class="skeleton sk-line"></div><div class="skeleton sk-line short"></div></div>
+    </div>
+
+    <section class="grid" id="grid" aria-live="polite"></section>
+
+    <section id="folders-view" hidden>
+      <div class="empty" id="folders-empty" hidden>
+        <div class="empty-icon"><svg><use href="#i-folder"></use></svg></div>
+        <h3>No folders yet</h3>
+        <p>Add your video folders from the Trainu control panel on the laptop.</p>
+      </div>
+      <div class="folder-list" id="folder-list"></div>
+      <div class="folders-note">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8.2 10V8.1a3.8 3.8 0 0 1 7.6 0V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="14.4" r="1.2" fill="currentColor"/><path d="M12 15.4v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <p><b>Chosen on the laptop.</b> This phone can watch the titles inside these folders, but it cannot open a folder, add one, or browse the drive. Manage folders from the laptop panel.</p>
+      </div>
+    </section>
+
+    <section id="settings-view" hidden>
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Connection</h3>
+            <p>Direct to your laptop. Nothing is uploaded and no internet is used.</p>
+          </div>
+          <span class="pill" id="settings-pill"><i class="dot"></i><span>—</span></span>
+        </div>
+        <div class="rows">
+          <div class="row"><span>Address</span><b id="settings-url">—</b></div>
+          <div class="row"><span>Link</span><b id="settings-mode">USB / Wi-Fi</b></div>
+          <div class="row"><span>Library</span><b id="settings-library">—</b></div>
+          <div class="row"><span>Last scan</span><b id="settings-scan">—</b></div>
+          <div class="row"><span>This phone</span><b id="settings-device" class="mono">—</b></div>
+        </div>
+        <div class="panel-actions">
+          <button class="btn btn-sm" id="refresh-btn"><svg style="width:15px;height:15px"><use href="#i-refresh"></use></svg>Refresh library</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Make it feel like an app</h3></div>
+        <p id="install-hint">Add Trainu to your home screen from the browser menu. It opens straight to your library.</p>
+        <div class="panel-actions">
+          <button class="btn btn-sm btn-primary" id="install-btn" hidden><svg style="width:15px;height:15px"><use href="#i-download"></use></svg>Install Trainu</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Files stay on the laptop</h3>
+            <p>Trainu shares a catalogue, not your drives.</p>
+          </div>
+          <span class="badge accent">Private</span>
+        </div>
+        <div class="privacy-steps">
+          <div class="privacy-step"><b>01 Curated</b><span>Only videos inside folders you added on the laptop.</span></div>
+          <div class="privacy-step"><b>02 Hashed</b><span>Every title is addressed by an ID, never by its path.</span></div>
+          <div class="privacy-step"><b>03 Inline</b><span>Only the chosen video streams. There is no file browser.</span></div>
+        </div>
+        <p class="privacy-foot">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 19 6v5.2c0 4.4-2.8 7.6-7 9.3-4.2-1.7-7-4.9-7-9.3V6l7-2.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>This phone cannot list a drive, open a folder, or ask for a filename. Unindexed files do not have an address to request.</span>
+        </p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Playback</h3></div>
+        <div class="rows">
+          <div class="row"><span>Format support</span><b id="settings-ffmpeg">—</b></div>
+          <div class="row"><span>Resume positions</span><b>Saved on this phone</b></div>
+          <div class="row"><span>Video transfers</span><b>None — streamed live</b></div>
+        </div>
+        <div class="panel-actions">
+          <button class="btn btn-sm" id="clear-progress"><svg style="width:15px;height:15px"><use href="#i-trash"></use></svg>Clear watch progress</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>USB tips</h3></div>
+        <ul class="hint-list">
+          <li><b>One-tap USB:</b> connect the cable, enable USB debugging, then press <b>Connect phone</b> in the laptop panel and open <span class="mono">localhost</span> on this phone.</li>
+          <li><b>USB tethering:</b> turn on USB tethering in the phone's hotspot settings; the laptop appears as a wired network.</li>
+          <li><b>Wi-Fi works too</b> and stays fully offline — just keep both devices on the same router.</li>
+          <li>Keep the laptop awake while watching. Closing the lid pauses playback.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <div class="about-mark">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l10.2-6.8a1 1 0 0 0 0-1.7L9.6 4.3A1 1 0 0 0 8 5.2Z"/></svg></span>
+          <div>
+            <h3>Trainu <span class="muted" id="app-version" style="font-weight:400;font-size:.8rem"></span></h3>
+            <p>Your laptop's library, on this screen. Built to work on a cable, in a room with no internet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="empty" class="empty" hidden>
+      <div class="empty-icon"><svg><use href="#i-film"></use></svg></div>
+      <h3 id="empty-title">Nothing here yet</h3>
+      <p id="empty-text">Add a folder with videos on the laptop and it will show up here.</p>
+      <button class="btn btn-sm" id="empty-action" hidden>Show all videos</button>
+    </section>
+  </div>
+
+  <nav class="tabbar" aria-label="Main navigation">
+    <button data-tab="library" class="active" aria-current="page">
+      <svg><use href="#i-grid"></use></svg>
+      <span>Library</span>
+    </button>
+    <button data-tab="continue">
+      <svg><use href="#i-clock"></use></svg>
+      <span>Continue</span>
+    </button>
+    <button data-tab="folders">
+      <svg><use href="#i-folder"></use></svg>
+      <span>Folders</span>
+    </button>
+    <button data-tab="settings">
+      <svg><use href="#i-settings"></use></svg>
+      <span>Settings</span>
+    </button>
+  </nav>
+
+  <!-- Player ------------------------------------------------------------ -->
+  <div class="player" id="player" hidden aria-hidden="true" role="dialog" aria-label="Video player" tabindex="-1">
+    <video id="p-video" playsinline webkit-playsinline preload="metadata"></video>
+
+    <div class="player-top">
+      <button class="icon-btn" id="p-close" aria-label="Close player">
+        <svg><use href="#i-arrow-left"></use></svg>
+      </button>
+      <div class="player-heading">
+        <h2 id="p-title">—</h2>
+        <p id="p-sub"></p>
+      </div>
+      <button class="icon-btn" id="p-menu-btn" aria-label="Playback options">
+        <svg><use href="#i-more"></use></svg>
+      </button>
+    </div>
+
+    <div class="player-center">
+      <button class="bigplay" id="p-bigplay" aria-label="Play">
+        <svg><use href="#i-play"></use></svg>
+      </button>
+    </div>
+    <div class="player-spinner"><div class="spinner"></div></div>
+
+    <div class="seek-flash left" id="p-flash-left">−10s<span>double-tap</span></div>
+    <div class="seek-flash right" id="p-flash-right">+10s<span>double-tap</span></div>
+
+    <div class="resume-toast" id="p-resume" hidden>
+      <span id="p-resume-text">Resuming</span>
+      <button id="p-startover">Start over</button>
+    </div>
+
+    <div class="player-bottom">
+      <div class="player-controls-inner">
+        <div class="player-notice" id="p-notice" hidden>
+          <span class="spinner" id="p-notice-spinner"></span>
+          <span id="p-notice-text"></span>
+        </div>
+        <div class="seek-wrap">
+          <input class="seek" id="p-seek" type="range" min="0" max="1000" step="1" value="0" aria-label="Seek">
+        </div>
+        <div class="player-times">
+          <span id="p-time">0:00</span>
+          <span class="remaining" id="p-remaining"></span>
+          <span id="p-duration">0:00</span>
+        </div>
+        <div class="player-actions">
+          <button class="icon-btn" id="p-play" aria-label="Play">
+            <svg><use href="#i-play"></use></svg>
+          </button>
+          <button class="icon-btn" id="p-back" aria-label="Back 10 seconds">
+            <svg><use href="#i-back10"></use></svg>
+          </button>
+          <button class="icon-btn" id="p-fwd" aria-label="Forward 10 seconds">
+            <svg><use href="#i-fwd10"></use></svg>
+          </button>
+          <span class="spacer"></span>
+          <button class="icon-btn" id="p-mute" aria-label="Mute">
+            <svg><use href="#i-volume"></use></svg>
+          </button>
+          <button class="icon-btn" id="p-cc" aria-label="Subtitles" hidden>
+            <span class="cc-badge">CC</span>
+          </button>
+          <button class="speed-btn" id="p-speed" aria-label="Playback speed">1×</button>
+          <button class="icon-btn" id="p-pip" aria-label="Picture in picture" hidden>
+            <svg><use href="#i-pip"></use></svg>
+          </button>
+          <button class="icon-btn" id="p-full" aria-label="Fullscreen">
+            <svg><use href="#i-fullscreen"></use></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="end-card" id="p-end" hidden>
+      <div class="end-inner">
+        <p class="eyebrow">Finished</p>
+        <h3 id="p-end-title">—</h3>
+        <p id="p-end-sub"></p>
+        <div class="end-actions">
+          <button class="btn btn-ghost btn-sm" id="p-end-close">Close</button>
+          <button class="btn btn-primary btn-sm" id="p-next">Play next</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="player-error" id="p-error" hidden>
+      <div class="error-box">
+        <div class="error-icon"><svg><use href="#i-warning"></use></svg></div>
+        <h3 id="p-error-title">Can't play this video</h3>
+        <p id="p-error-text">Something interrupted the stream.</p>
+        <div class="btn-row">
+          <button class="btn btn-ghost btn-sm" id="p-error-close">Close</button>
+          <button class="btn btn-sm" id="p-error-retry">Retry</button>
+          <button class="btn btn-primary btn-sm" id="p-error-convert" hidden>Convert &amp; play</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet-backdrop" id="p-sheet-backdrop"></div>
+    <div class="sheet" id="p-sheet" aria-label="Playback options">
+      <div class="sheet-handle"></div>
+      <div id="p-sheet-content"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript><p style="padding:24px">Trainu needs JavaScript enabled in your browser.</p></noscript>
+</body>
+</html>

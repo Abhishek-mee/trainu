@@ -1,0 +1,440 @@
+/* ---------------------------------------------------------------------- */
+/* Pairing pass — a dark cinema ticket on a black stage                   */
+/* Netflix-inspired red for the admission stamp and primary action.       */
+/* ---------------------------------------------------------------------- */
+
+.pair-body {
+  --nf-red: #e50914;
+  --nf-red-hover: #f6121d;
+
+  --paper: #0d0d0d;
+  --paper-edge: #090909;
+  --ink: #ffffff;
+  --ink-soft: #b3b3b3;
+  --ink-faint: #8c8c8c;
+  --edge: #2a2a2a;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(22px, env(safe-area-inset-top)) 18px max(26px, env(safe-area-inset-bottom));
+  background: #000000;
+}
+
+.pair-shell {
+  width: min(100%, 452px);
+}
+
+.pair-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding: 0 4px;
+}
+
+.pair-body .brand {
+  gap: 4px;
+  color: var(--nf-red);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+}
+
+.pair-body .brand-mark {
+  width: 25px;
+  height: 25px;
+  border-radius: 0;
+  background: transparent;
+  color: var(--nf-red);
+}
+
+.pair-body .brand-mark svg {
+  width: 23px;
+  height: 23px;
+  margin-left: 0;
+}
+
+.pair-body .pill {
+  height: 22px;
+  padding: 0 2px;
+  border: 0;
+  background: transparent;
+  color: var(--ink-faint);
+  font-size: 0.56rem;
+  letter-spacing: 0.13em;
+  font-weight: 600;
+}
+
+.pair-body .pill .dot {
+  background: var(--nf-green, #46d369);
+}
+
+/* Ticket shell -------------------------------------------------------- */
+
+.ticket {
+  position: relative;
+  border-radius: 6px;
+  border: 1px solid #262626;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.ticket-ribbon {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 24px;
+  border-bottom: 1px solid #262626;
+  border-radius: 6px 6px 0 0;
+  background: #000000;
+  color: var(--ink-faint);
+  font-family: var(--font);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.ticket-admit {
+  color: var(--nf-red);
+  letter-spacing: 0.14em;
+}
+
+.ticket-main {
+  padding: 28px 24px 24px;
+}
+
+.ticket .eyebrow {
+  gap: 8px;
+  color: var(--ink-faint);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.ticket .eyebrow::before {
+  content: "";
+  width: 3px;
+  height: 11px;
+  flex-shrink: 0;
+  background: var(--nf-red);
+}
+
+.ticket h1 {
+  margin: 10px 0 0;
+  max-width: 13ch;
+  font-family: var(--font);
+  font-size: clamp(2.2rem, 9.5vw, 2.85rem);
+  font-weight: 800;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.pair-lede {
+  margin-top: 13px;
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+/* Steps as a ledger --------------------------------------------------- */
+
+.pair-steps {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--edge);
+}
+
+.pair-steps li {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 11px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--edge);
+  color: var(--ink-soft);
+  font-size: 0.79rem;
+  line-height: 1.5;
+}
+
+.step-num {
+  padding-top: 0.16em;
+  color: var(--nf-red);
+  font-family: var(--font);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.pair-steps b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.panel-url {
+  display: inline;
+  padding: 1px 4px;
+  border-bottom: 1px solid var(--nf-red);
+  background: #1a1a1a;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Divider + form ------------------------------------------------------ */
+
+.pair-divider {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 20px 0 15px;
+  color: var(--ink-faint);
+  font-family: var(--font);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pair-divider::before,
+.pair-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--edge);
+}
+
+.pair-form {
+  text-align: left;
+}
+
+.pair-form label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--ink-faint);
+  font-family: var(--font);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.pair-input-row {
+  display: flex;
+  gap: 7px;
+}
+
+.pair-input-row .input {
+  min-width: 0;
+  flex: 1;
+  min-height: 48px;
+  padding: 0 13px;
+  border: 1px solid #333333;
+  border-radius: 4px;
+  background: #161616;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pair-input-row .input::placeholder {
+  color: #5c5c5c;
+  letter-spacing: 0.14em;
+}
+
+.pair-input-row .input:focus {
+  border-color: #ffffff;
+  background: #161616;
+  outline: none;
+}
+
+.pair-input-row .btn {
+  flex: 0 0 auto;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.pair-input-row .btn-primary {
+  border-color: var(--nf-red);
+  background: var(--nf-red);
+  color: #ffffff;
+}
+
+.pair-input-row .btn-primary:hover {
+  border-color: var(--nf-red-hover);
+  background: var(--nf-red-hover);
+  color: #ffffff;
+}
+
+.pair-form .fine {
+  margin-top: 9px;
+  color: var(--ink-faint);
+  font-size: 0.65rem;
+}
+
+.pair-form .fine .mono {
+  color: var(--ink-soft);
+}
+
+.pair-error {
+  margin-top: 11px;
+  padding: 9px 11px;
+  border: 1px solid rgba(229, 9, 20, 0.55);
+  border-left-width: 3px;
+  border-radius: 3px;
+  background: rgba(229, 9, 20, 0.1);
+  color: #ffb3b3;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+/* Privacy note -------------------------------------------------------- */
+
+.pair-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--edge);
+  color: var(--ink-faint);
+  font-size: 0.71rem;
+  line-height: 1.55;
+}
+
+.pair-note svg {
+  flex: 0 0 19px;
+  width: 19px;
+  height: 19px;
+  margin-top: 1px;
+  color: var(--nf-red);
+}
+
+/* Tear strip ---------------------------------------------------------- */
+
+.ticket-tear {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 24px 16px;
+  border-top: 1px solid var(--edge);
+  border-radius: 0 0 6px 6px;
+  background: var(--paper-edge);
+}
+
+.ticket-tear::before,
+.ticket-tear::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #000000;
+}
+
+.ticket-tear::before {
+  left: -8px;
+}
+
+.ticket-tear::after {
+  right: -8px;
+}
+
+.tear-label {
+  color: var(--ink-faint);
+  font-family: var(--font);
+  font-size: 0.52rem;
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.barcode {
+  width: 92px;
+  height: 25px;
+  flex-shrink: 0;
+  opacity: 0.55;
+  background: repeating-linear-gradient(
+    90deg,
+    #ffffff 0 1px,
+    transparent 1px 3px,
+    #ffffff 3px 5px,
+    transparent 5px 6px,
+    #ffffff 6px 7px,
+    transparent 7px 11px,
+    #ffffff 11px 13px,
+    transparent 13px 14px
+  );
+}
+
+/* Footer -------------------------------------------------------------- */
+
+.pair-foot {
+  margin-top: 17px;
+  padding: 0 8px;
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 0.71rem;
+  line-height: 1.55;
+}
+
+.pair-foot b {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.pair-foot .fine {
+  margin-top: 7px;
+  color: #666666;
+  letter-spacing: 0.03em;
+}
+
+/* Responsive ---------------------------------------------------------- */
+
+@media (max-width: 420px) {
+  .pair-body {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .ticket-main {
+    padding: 24px 19px 20px;
+  }
+
+  .ticket-ribbon,
+  .ticket-tear {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+
+  .pair-input-row {
+    flex-direction: column;
+  }
+
+  .pair-input-row .btn {
+    width: 100%;
+  }
+
+  .barcode {
+    width: 74px;
+  }
+}

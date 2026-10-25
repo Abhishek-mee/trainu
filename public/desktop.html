@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>Trainu · Laptop panel</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/desktop.css">
+</head>
+<body class="desk-body">
+  <div class="desk-shell">
+    <header class="desk-top">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l10.2-6.8a1 1 0 0 0 0-1.7L9.6 4.3A1 1 0 0 0 8 5.2Z"/></svg></span>
+        <span>Trainu</span>
+        <span class="top-label">Projection booth</span>
+      </div>
+      <div class="top-actions">
+        <span class="pill" id="server-pill"><i class="dot"></i><span id="server-pill-text">Starting</span></span>
+        <a class="btn btn-sm" href="/phone" target="_blank" rel="noopener">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 5.5h4"/></svg>
+          Preview phone
+        </a>
+        <button class="btn btn-sm" id="rescan-top">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-1.6 6"/><path d="M20 4v7h-7"/></svg>
+          Rescan
+        </button>
+      </div>
+    </header>
+
+    <main class="desk-main">
+      <section class="intro">
+        <div class="intro-copy">
+          <p class="eyebrow">Private screening room</p>
+          <h1>Your films stay<br><em>on this laptop.</em></h1>
+          <p class="intro-lede">Trainu turns the folders you choose into a private, local library. The phone gets a catalogue and one video at a time — never a view of your drive.</p>
+          <div class="intro-meta">
+            <span class="pill online"><i class="dot"></i><span id="intro-state">Local only</span></span>
+            <span class="mono" id="intro-addr">—</span>
+            <span class="intro-rule"></span>
+            <span class="fine">Loopback panel · no cloud</span>
+          </div>
+        </div>
+
+        <figure class="signal-figure">
+          <img class="signal-svg" src="/iso-local-link.svg" width="918" height="660" alt="Isometric screening desk: a laptop holds a private library behind a lock, and a single white title travels down a cable to a phone.">
+          <figcaption>
+            <span class="fig-dot" aria-hidden="true"></span>
+            <span>Only the title you tap travels down the cable. Folders, filenames and the rest of the drive stay here.</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <div class="desk-grid">
+        <article class="panel connect-panel">
+          <header class="panel-head">
+            <div>
+              <p class="panel-index">01 / Link</p>
+              <h2>Connect your phone</h2>
+              <p>Scan once. This laptop remembers the phone, and nobody else.</p>
+            </div>
+            <span class="badge accent" id="link-kind">USB</span>
+          </header>
+
+          <div class="connect-grid">
+            <div class="qr-card">
+              <p class="qr-kicker">Trainu · Pairing pass</p>
+              <div id="qr" class="qr" aria-label="Pairing QR code"></div>
+              <p class="qr-caption" id="qr-caption">Preparing the code…</p>
+              <p class="qr-hint" id="qr-hint">Point your phone camera at this code.</p>
+            </div>
+
+            <div class="connect-side">
+              <div class="field">
+                <label for="pair-url">Pairing link</label>
+                <div class="copy-row">
+                  <input id="pair-url" class="input mono" readonly value="Starting…">
+                  <button class="btn btn-sm" id="copy-url" type="button">Copy</button>
+                </div>
+              </div>
+
+              <div class="method-tabs" role="tablist" aria-label="Connection method">
+                <button type="button" data-method="adb" class="active" role="tab" aria-selected="true">USB debugging</button>
+                <button type="button" data-method="tether" role="tab" aria-selected="false">USB tethering</button>
+                <button type="button" data-method="wifi" role="tab" aria-selected="false">Wi-Fi</button>
+              </div>
+              <div id="method-panel" class="method-panel" role="tabpanel">
+                <p class="fine">Checking the USB link…</p>
+              </div>
+
+              <div class="url-list-wrap">
+                <div class="url-list-head">
+                  <span>Addresses on this laptop</span>
+                  <span class="fine">tap one to show its QR</span>
+                </div>
+                <div class="url-list" id="url-list"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="connect-privacy">
+            <span class="privacy-seal" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="5" y="10" width="14" height="10" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8.2 10V8.1a3.8 3.8 0 0 1 7.6 0V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="12" cy="14.4" r="1.2" fill="currentColor"/>
+                <path d="M12 15.4v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <div class="privacy-copy">
+              <p class="privacy-kicker">Privacy, by construction</p>
+              <p>The phone receives a catalogue and one video stream at a time. It never gets a folder listing, a file path, or a way to browse this drive.</p>
+            </div>
+            <div class="privacy-tags" aria-label="Privacy guarantees">
+              <span>No paths</span>
+              <span>No browsing</span>
+              <span>No cloud</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel library-panel">
+          <header class="panel-head">
+            <div>
+              <p class="panel-index">02 / Library</p>
+              <h2>Your folders</h2>
+              <p>Only what Trainu is allowed to read.</p>
+            </div>
+            <button class="btn btn-sm" id="rescan">Rescan</button>
+          </header>
+
+          <div class="stats">
+            <div class="stat"><b id="stat-count">—</b><span>videos</span></div>
+            <div class="stat"><b id="stat-size">—</b><span>total size</span></div>
+            <div class="stat"><b id="stat-scan">—</b><span>last scan</span></div>
+          </div>
+
+          <div class="notice" id="scan-note" hidden>
+            <span class="spinner sm"></span>
+            <span id="scan-note-text">Scanning…</span>
+          </div>
+
+          <ul class="folder-admin" id="folder-list"></ul>
+
+          <form id="add-folder-form" class="add-folder" autocomplete="off">
+            <input id="folder-path" class="input mono" placeholder="C:\Users\you\Videos" aria-label="Folder path to add" spellcheck="false">
+            <button class="btn btn-primary btn-sm" type="submit">Add folder</button>
+          </form>
+          <p class="field-error" id="folder-error" hidden></p>
+          <p class="fine">Add specific folders, not a whole drive. Hidden and system folders are skipped automatically.</p>
+        </article>
+
+        <article class="panel system-panel">
+          <header class="panel-head">
+            <div>
+              <p class="panel-index">03 / Engine</p>
+              <h2>Playback engine</h2>
+              <p>ffmpeg unlocks thumbnails and stubborn formats.</p>
+            </div>
+            <span class="badge" id="ffmpeg-badge">Checking</span>
+          </header>
+
+          <p class="system-copy" id="ffmpeg-summary">MP4, M4V, MOV and WebM play directly. ffmpeg adds thumbnails plus MKV, AVI and HEVC support.</p>
+
+          <div class="rows">
+            <div class="row"><span>ffmpeg</span><b id="ffmpeg-state">Checking…</b></div>
+            <div class="row"><span>Live conversion</span><b id="transcode-state">—</b></div>
+            <div class="row"><span>Server</span><b id="server-info">—</b></div>
+            <div class="row"><span>Data folder</span><b id="data-dir" class="mono">—</b></div>
+          </div>
+
+          <div class="form-row">
+            <input id="ffmpeg-path" class="input mono" placeholder="Path to ffmpeg.exe (optional)" aria-label="Custom ffmpeg path" spellcheck="false">
+            <button id="save-ffmpeg" class="btn btn-sm" type="button">Save</button>
+          </div>
+
+          <div class="system-actions">
+            <label class="toggle">
+              <input type="checkbox" id="transcode-toggle">
+              <span class="toggle-ui"></span>
+              Allow live conversion
+            </label>
+            <label class="inline-field">Rescan every
+              <input id="scan-minutes" class="input tiny" type="number" min="0" max="1440" step="5" aria-label="Automatic rescan minutes">
+              min
+            </label>
+          </div>
+
+          <details class="firewall">
+            <summary>Phone can't connect?</summary>
+            <p>Allow the port through Windows Firewall. Run this once in an administrator terminal:</p>
+            <div class="copy-row">
+              <code id="firewall-cmd">netsh advfirewall firewall add rule …</code>
+              <button class="btn btn-sm" id="copy-firewall" type="button">Copy</button>
+            </div>
+            <p>Then make sure the phone and laptop are on the same Wi-Fi, or use a USB method above.</p>
+          </details>
+        </article>
+
+        <article class="panel activity-panel">
+          <header class="panel-head">
+            <div>
+              <p class="panel-index">04 / Activity</p>
+              <h2>Projector log</h2>
+              <p>What the server is doing right now.</p>
+            </div>
+            <span class="fine">auto-refreshes</span>
+          </header>
+          <ul class="log" id="log"></ul>
+        </article>
+      </div>
+
+      <footer class="desk-foot">
+        <span>Trainu v<span id="version">1.0.0</span> · Runs entirely on this laptop</span>
+        <span>No accounts · No cloud · No internet</span>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/vendor/qrcode.js"></script>
+  <script src="/js/desktop.js" defer></script>
+</body>
+</html>

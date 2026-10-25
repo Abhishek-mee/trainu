@@ -1,0 +1,44 @@
+{
+  "name": "trainu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stream the video library on your laptop to your phone over USB or Wi-Fi. No copying, no cloud, no accounts.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Abhishek-mee",
+  "homepage": "https://github.com/Abhishek-mee/trainu#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abhishek-mee/trainu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Abhishek-mee/trainu/issues"
+  },
+  "keywords": [
+    "video",
+    "streaming",
+    "local-first",
+    "offline",
+    "pwa",
+    "usb",
+    "adb",
+    "self-hosted",
+    "privacy",
+    "nodejs"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node bin/trainu.mjs",
+    "dev": "node --watch bin/trainu.mjs",
+    "test": "node --test test/",
+    "test:server": "node --test test/server.test.mjs",
+    "test:units": "node --test test/units.test.mjs",
+    "icons": "node scripts/make-icons.mjs",
+    "figure": "node scripts/make-signal-figure.mjs"
+  },
+  "bin": {
+    "trainu": "bin/trainu.mjs"
+  }
+}

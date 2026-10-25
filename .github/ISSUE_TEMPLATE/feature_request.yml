@@ -1,0 +1,66 @@
+name: Feature request
+description: Suggest a focused improvement to Trainu.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Trainu stays small on purpose: no runtime dependencies, no cloud, no accounts and no telemetry. Please explain how the idea fits that shape.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the user need, not only the proposed implementation.
+      placeholder: I want to find a film by actor, but the phone only searches titles.
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: What would you like to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      description: Existing workarounds, other apps, or a smaller version of the idea.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Phone UI
+        - Laptop panel
+        - USB / adb
+        - Wi-Fi / networking
+        - Streaming / player
+        - Library scanning
+        - Subtitles
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This can work without a cloud service, account or telemetry.
+          required: true
+        - label: This does not require a new runtime npm dependency.
+          required: true
+        - label: This does not expose filesystem paths or the admin panel to the phone.
+          required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Mockups, examples, or links that help explain the idea.

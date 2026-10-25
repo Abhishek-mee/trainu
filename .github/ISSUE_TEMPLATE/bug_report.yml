@@ -1,0 +1,86 @@
+name: Bug report
+description: Something is broken or behaves unexpectedly.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please remove personal paths, library names and pairing tokens from logs and screenshots.
+
+        For a security issue, do **not** use this form. Follow [SECURITY.md](https://github.com/Abhishek-mee/trainu/blob/main/SECURITY.md).
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear, short description of the problem.
+      placeholder: The phone shows the library, but tapping a title does nothing.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Number the smallest set of steps that shows the problem.
+      placeholder: |
+        1. Start Trainu with npm start
+        2. Pair a phone over USB debugging
+        3. Tap a video
+    validations:
+      required: true
+
+  - type: input
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+
+  - type: input
+    id: actual
+    attributes:
+      label: What happened instead?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: connection
+    attributes:
+      label: Connection
+      options:
+        - USB debugging (adb reverse)
+        - USB tethering
+        - Wi-Fi
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node version, phone model, browser and Trainu version.
+      placeholder: Windows 11, Node 22.11, Pixel 7, Chrome 132, Trainu 1.0.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Paste the relevant server output or attach a screenshot. Redact paths, tokens and personal filenames.
+      render: shell
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues for the same problem.
+          required: true
+        - label: I removed personal paths, library names and tokens from this report.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true
